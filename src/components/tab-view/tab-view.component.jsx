@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './tab-view.styles.scss'
 import RidesData from '../../RidesData';
 import ItemPreview from '../item-preview/item-preview.component';
@@ -14,6 +14,9 @@ class Tabview extends Component {
             selectedCity: "",
             selectedState: ''
         }
+    }
+    handleReset=() =>{
+        this.setState({selectedCity: '',selectedState: ''})
     }
     handleClick = (e) => {
         this.setState({ type: e.target.id })
@@ -55,7 +58,7 @@ class Tabview extends Component {
         var uniqueStates = Array.from(new Set(states));
 
         const FilteredRides = newRids.filter((ride) => {
-            return ((ride.city == this.state.selectedCity || this.state.selectedCity == "") && (ride.state == this.state.selectedState || this.state.selectedState == "")  )
+            return ((ride.city === this.state.selectedCity || this.state.selectedCity === "") && (ride.state === this.state.selectedState || this.state.selectedState === "")  )
            
         })
 
@@ -75,7 +78,7 @@ class Tabview extends Component {
                 <Link id='3' className='option' to='past-rides' onClick={this.handleClick}>
                     Past Rides ({FilteredRides.filter(ride => (new Date(ride.date) < new Date())).length})
                 </Link>
-                <Filter key={FilteredRides.id} city={uniqueCities} state={uniqueStates} handleSelectCity={this.handleSelectCity} handleSelectState={this.handleSelectState} />
+                <Filter key={FilteredRides.id} handleReset={this.handleReset} city={uniqueCities} state={uniqueStates} handleSelectCity={this.handleSelectCity} handleSelectState={this.handleSelectState} />
                 {
                     id === '1' ? (FilteredRides
                         .map((ride) => (<ItemPreview key={ride.id} ride={ride} />))

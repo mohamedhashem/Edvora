@@ -1,8 +1,9 @@
 import './filter.styles.scss'
 import * as React from 'react'
 import Popper from '@mui/material/Popper'
+import { buttonGroupClasses } from '@mui/material'
 
-const Filter = ({ city, state,handleSelectState,handleSelectCity }) => {
+const Filter = ({ city, state,handleSelectState,handleSelectCity,handleReset }) => {
     const [anchorEl, setAnchorEl] = React.useState(null)
 
     const handleClick = (event) => {
@@ -41,6 +42,7 @@ const Filter = ({ city, state,handleSelectState,handleSelectCity }) => {
                             }
                         </select>
                     </div>
+                <button className='btn' onClick={handleReset}>Reset </button>
                 </div>
             </Popper>
         </span>
