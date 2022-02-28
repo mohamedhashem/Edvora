@@ -1,11 +1,12 @@
 .filter {
-  width: 200px;
+  margin-right: 50px;
+  width: auto;
   height: 150px;
   padding: 20px;
   background-color: black;
   border-radius: 20px;
   .select-container {
-     background-color: black;
+    background-color: black;
     padding-bottom: 5px;
     .select {
       padding: 10px;

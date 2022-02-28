@@ -31,7 +31,7 @@ class App extends Component {
       <div className="App">
         <Header user ={this.state.user} />
         <Routes>
-          <Route path="/tab-view" element={<Tabview UserData={this.state.user} />} >
+           <Route path="/" element={<Tabview UserData={this.state.user} />} >
             <Route path='nearest-rides' element={<ItemPreview />} />
             <Route path='upcoming-rides' element={<ItemPreview />} />
             <Route path='past-rides' element={<ItemPreview />} />
